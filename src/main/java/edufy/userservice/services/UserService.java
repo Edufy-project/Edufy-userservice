@@ -1,6 +1,6 @@
-package edify.userservice.services;
+package edufy.userservice.services;
 
-import edify.userservice.entities.User;
+import edufy.userservice.entities.User;
 
 import java.util.List;
 import java.util.Optional;

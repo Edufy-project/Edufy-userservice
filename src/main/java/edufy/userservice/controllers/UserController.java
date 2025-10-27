@@ -1,11 +1,10 @@
-package edify.userservice.controllers;
+package edufy.userservice.controllers;
 
-import edify.userservice.entities.User;
-import edify.userservice.exceptions.InvalidUserException;
-import edify.userservice.exceptions.ResourceNotFoundException;
-import edify.userservice.services.UserService;
+import edufy.userservice.entities.User;
+import edufy.userservice.exceptions.InvalidUserException;
+import edufy.userservice.exceptions.ResourceNotFoundException;
+import edufy.userservice.services.UserService;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;

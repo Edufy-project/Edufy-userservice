@@ -1,4 +1,4 @@
-package edify.userservice.entities;
+package edufy.userservice.entities;
 
 import jakarta.persistence.*;
 

@@ -1,9 +1,9 @@
-package edify.userservice.services;
+package edufy.userservice.services;
 
-import edify.userservice.entities.User;
-import edify.userservice.exceptions.InvalidUserException;
-import edify.userservice.exceptions.ResourceNotFoundException;
-import edify.userservice.repositories.UserRepository;
+import edufy.userservice.entities.User;
+import edufy.userservice.exceptions.InvalidUserException;
+import edufy.userservice.exceptions.ResourceNotFoundException;
+import edufy.userservice.repositories.UserRepository;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;

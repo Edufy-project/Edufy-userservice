@@ -1,7 +1,7 @@
-package edify.userservice.configs;
+package edufy.userservice.configs;
 
-import edify.userservice.exceptions.ResourceNotFoundException;
-import edify.userservice.repositories.UserRepository;
+import edufy.userservice.exceptions.ResourceNotFoundException;
+import edufy.userservice.repositories.UserRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
