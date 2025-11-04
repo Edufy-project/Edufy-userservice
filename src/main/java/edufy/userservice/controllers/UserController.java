@@ -4,6 +4,7 @@ import edufy.userservice.entities.User;
 import edufy.userservice.exceptions.InvalidUserException;
 import edufy.userservice.exceptions.ResourceNotFoundException;
 import edufy.userservice.services.UserService;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
@@ -78,6 +79,21 @@ public class UserController {
         } catch (ResourceNotFoundException e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
+    }
+
+    @GetMapping("/usermediahistory/{userid}")
+    public List<Object> getUserMediaHistory(@PathVariable long userid){
+        return userService.getUserMediaHistory(userid);
+    }
+
+    @PutMapping("/setusermediahistory/{userid}")
+    public void setUserMediaHistory(@PathVariable long userid, @Valid @RequestBody List<Object> mediaHistory){
+        userService.setUserMediaHistory(userid, mediaHistory);
+    }
+
+    @PutMapping("/addtousermediahistory/{userid}")
+    public void addToUserMediaHistory(@PathVariable long userid, @Valid @RequestBody Object media){
+        userService.addMediaToUserMediaHistory(userid, media);
     }
 
 }

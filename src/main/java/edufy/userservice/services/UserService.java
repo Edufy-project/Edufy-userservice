@@ -14,4 +14,8 @@ public interface UserService {
     void deleteUser(Long id);
     void incrementPlayCount(String username, Long count);
 
+    void setUserMediaHistory(long userId, List<Object> mediaHistory);
+    void addMediaToUserMediaHistory(long userId, Object media);
+    List<Object> getUserMediaHistory(long userId);
+
 }

@@ -110,4 +110,35 @@ public class UserServiceImpl implements UserService {
         userRepository.save(user);
 
     }
+
+    public User getUserOrThrow(long userId){
+        return userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User", "UserId", userId));
+    }
+
+    @Override
+    public void setUserMediaHistory(long userId, List<Object> mediaHistory) {
+
+        if (mediaHistory == null){
+            throw new IllegalArgumentException("Can not add null Object to User MediaHistory.");
+        }
+        getUserOrThrow(userId).setMediaHistory(mediaHistory);
+    }
+
+    @Override
+    public void addMediaToUserMediaHistory(long userId, Object media) {
+        if (media == null){
+            throw new IllegalArgumentException("Can not add null Object to User MediaHistory.");
+        }
+        else {
+            getUserOrThrow(userId).addToMediaHistory(media);
+        }
+    }
+
+    @Override
+    public List<Object> getUserMediaHistory(long userId) {
+
+        return getUserOrThrow(userId).getMediaHistory();
+    }
+
+
 }
