@@ -28,14 +28,14 @@ public class User {
 @Column(nullable = false)
 private String roles = "USER";
 
-@OneToMany(cascade = CascadeType.ALL)
-private List<Object> mediaHistory = new ArrayList<>();
+@ElementCollection
+private List<MediaReference> mediaHistory = new ArrayList<>();
 
 
     public User() {
     }
 
-    public User(Long id, String username, String password, String preferredGenres, Long totalPlayCount, List<Object> mediaHistory) {
+    public User(Long id, String username, String password, String preferredGenres, Long totalPlayCount, List<MediaReference> mediaHistory) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -95,7 +95,7 @@ private List<Object> mediaHistory = new ArrayList<>();
 
     private final static int maxMediaHistoryArraySize = 100;
 
-    public void setMediaHistory(List<Object> mediaHistory){
+    public void setMediaHistory(List<MediaReference> mediaHistory){
         if (mediaHistory.size() > maxMediaHistoryArraySize){
             throw new IllegalArgumentException("Media History is not allowed to surpass the max length set within Edufy-userservice/User");
         }
@@ -105,14 +105,15 @@ private List<Object> mediaHistory = new ArrayList<>();
 
     }
 
-    public void addToMediaHistory(Object mediaObject){
+    public void addToMediaHistory(String mediaType, Long mediaId){
         if (this.mediaHistory.size() >= maxMediaHistoryArraySize){
             this.mediaHistory.remove(0);
         }
-        this.mediaHistory.add(mediaObject);
+        MediaReference mediaReference = new MediaReference(mediaType, mediaId);
+        this.mediaHistory.add(mediaReference);
     }
 
-    public List<Object> getMediaHistory(){
+    public List<MediaReference> getMediaHistory(){
         return this.mediaHistory;
     }
 

@@ -1,5 +1,6 @@
 package edufy.userservice.controllers;
 
+import edufy.userservice.entities.MediaReference;
 import edufy.userservice.entities.User;
 import edufy.userservice.exceptions.InvalidUserException;
 import edufy.userservice.exceptions.ResourceNotFoundException;
@@ -82,18 +83,18 @@ public class UserController {
     }
 
     @GetMapping("/usermediahistory/{userid}")
-    public List<Object> getUserMediaHistory(@PathVariable Long userid){
+    public List<MediaReference> getUserMediaHistory(@PathVariable Long userid){
         return userService.getUserMediaHistory(userid);
     }
 
     @PutMapping("/setusermediahistory/{userid}")
-    public void setUserMediaHistory(@PathVariable Long userid, @Valid @RequestBody List<Object> mediaHistory){
+    public void setUserMediaHistory(@PathVariable Long userid, @Valid @RequestBody List<MediaReference> mediaHistory){
         userService.setUserMediaHistory(userid, mediaHistory);
     }
 
-    @PutMapping("/addtousermediahistory/{userid}")
-    public void addToUserMediaHistory(@PathVariable Long userid, @Valid @RequestBody Object media){
-        userService.addMediaToUserMediaHistory(userid, media);
+    @PutMapping("/addtousermediahistory/{userid}/{mediatype}/{mediaid}")
+    public void addToUserMediaHistory(@PathVariable Long userid, @PathVariable String mediatype, @PathVariable Long mediaid){
+        userService.addMediaToUserMediaHistory(userid, mediatype, mediaid);
     }
 
 }

@@ -1,5 +1,6 @@
 package edufy.userservice.services;
 
+import edufy.userservice.entities.MediaReference;
 import edufy.userservice.entities.User;
 import edufy.userservice.exceptions.InvalidUserException;
 import edufy.userservice.exceptions.ResourceNotFoundException;
@@ -116,7 +117,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void setUserMediaHistory(Long userId, List<Object> mediaHistory) {
+    public void setUserMediaHistory(Long userId, List<MediaReference> mediaHistory) {
 
         if (mediaHistory == null){
             throw new IllegalArgumentException("Can not add null Object to User MediaHistory.");
@@ -125,17 +126,17 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addMediaToUserMediaHistory(Long userId, Object media) {
-        if (media == null){
-            throw new IllegalArgumentException("Can not add null Object to User MediaHistory.");
+    public void addMediaToUserMediaHistory(Long userId, String mediaType, Long mediaId) {
+        if (userId == null || mediaType == null || mediaId == null){
+            throw new IllegalArgumentException("Can not add to User MediaHistory with null in params.");
         }
         else {
-            getUserOrThrow(userId).addToMediaHistory(media);
+            getUserOrThrow(userId).addToMediaHistory(mediaType, mediaId);
         }
     }
 
     @Override
-    public List<Object> getUserMediaHistory(Long userId) {
+    public List<MediaReference> getUserMediaHistory(Long userId) {
 
         return getUserOrThrow(userId).getMediaHistory();
     }
