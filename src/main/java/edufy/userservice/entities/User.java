@@ -23,7 +23,7 @@ public class User {
     private String preferredGenres;
 
 @Column(nullable = false)
-    private Long totalPlayCount = 0L;
+    private Long totalPlayCount = (Long)0L;
 
 @Column(nullable = false)
 private String roles = "USER";

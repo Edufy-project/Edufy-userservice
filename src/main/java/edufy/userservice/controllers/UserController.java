@@ -82,17 +82,17 @@ public class UserController {
     }
 
     @GetMapping("/usermediahistory/{userid}")
-    public List<Object> getUserMediaHistory(@PathVariable long userid){
+    public List<Object> getUserMediaHistory(@PathVariable Long userid){
         return userService.getUserMediaHistory(userid);
     }
 
     @PutMapping("/setusermediahistory/{userid}")
-    public void setUserMediaHistory(@PathVariable long userid, @Valid @RequestBody List<Object> mediaHistory){
+    public void setUserMediaHistory(@PathVariable Long userid, @Valid @RequestBody List<Object> mediaHistory){
         userService.setUserMediaHistory(userid, mediaHistory);
     }
 
     @PutMapping("/addtousermediahistory/{userid}")
-    public void addToUserMediaHistory(@PathVariable long userid, @Valid @RequestBody Object media){
+    public void addToUserMediaHistory(@PathVariable Long userid, @Valid @RequestBody Object media){
         userService.addMediaToUserMediaHistory(userid, media);
     }
 

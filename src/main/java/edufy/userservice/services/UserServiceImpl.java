@@ -38,7 +38,7 @@ public class UserServiceImpl implements UserService {
             throw new InvalidUserException("Preferred genres is empty");
         }
         if (user.getTotalPlayCount() == null ) {
-            user.setTotalPlayCount(0L);
+            user.setTotalPlayCount((Long)0L);
         }
         userRepository.findByUsername(user.getUsername()).ifPresent(c ->{
             throw new InvalidUserException("Username already exists");
@@ -106,17 +106,17 @@ public class UserServiceImpl implements UserService {
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
 
-        user.setTotalPlayCount(user.getTotalPlayCount() + count);
+        user.setTotalPlayCount(Long.valueOf(user.getTotalPlayCount() + count));
         userRepository.save(user);
 
     }
 
-    public User getUserOrThrow(long userId){
+    public User getUserOrThrow(Long userId){
         return userRepository.findById(userId).orElseThrow(() -> new ResourceNotFoundException("User", "UserId", userId));
     }
 
     @Override
-    public void setUserMediaHistory(long userId, List<Object> mediaHistory) {
+    public void setUserMediaHistory(Long userId, List<Object> mediaHistory) {
 
         if (mediaHistory == null){
             throw new IllegalArgumentException("Can not add null Object to User MediaHistory.");
@@ -125,7 +125,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public void addMediaToUserMediaHistory(long userId, Object media) {
+    public void addMediaToUserMediaHistory(Long userId, Object media) {
         if (media == null){
             throw new IllegalArgumentException("Can not add null Object to User MediaHistory.");
         }
@@ -135,7 +135,7 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<Object> getUserMediaHistory(long userId) {
+    public List<Object> getUserMediaHistory(Long userId) {
 
         return getUserOrThrow(userId).getMediaHistory();
     }
