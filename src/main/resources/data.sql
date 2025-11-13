@@ -8,6 +8,14 @@ INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 2, 'mu
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 3, 'music');
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 4, 'music');
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 5, 'music');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 6, 'music');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 7, 'music');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 8, 'music');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 14, 'music');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 17, 'music');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 22, 'music');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 19, 'music');
 
-INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 2, 'music');
-INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 5, 'music');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 36, 'music');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 29, 'music');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 33, 'music');
