@@ -67,25 +67,27 @@ public class UserSecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-            // H2-console tillåten för alla
-            .requestMatchers("/h2-console/**").permitAll()
-            // Endpoints för registrering öppnen för alla
-            .requestMatchers("/api/edufy/registeruser").permitAll()
-            // Admin-restriktioner
-            .requestMatchers("/api/edufy/deleteuser/**").hasRole("ADMIN")
-            .requestMatchers("/api/edufy/listusers").hasRole("ADMIN")
-            .requestMatchers("/api/edufy/updateuser/**").hasRole("ADMIN")
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        // H2-console tillåten för alla
+                        //.requestMatchers("/h2-console/**").permitAll()
+                        // Endpoints för registrering öppnen för alla
+                        //.requestMatchers("/api/edufy/registeruser").permitAll()
+                        //.requestMatchers("/api/edufy/usermediahistory/**").permitAll()
+                        // Admin-restriktioner
+                        //.requestMatchers("/api/edufy/deleteuser/**").hasRole("ADMIN")
+                        //.requestMatchers("/api/edufy/listusers").hasRole("ADMIN")
+                        //.requestMatchers("/api/edufy/updateuser/**").hasRole("ADMIN")
 
-            // endpoints kräver inloggning USER eller ADMIN
-            .requestMatchers(
-                    "/api/edufy/user/**",
-                    "/api/edufy/user/**/increment-playcount")
-                    .hasAnyRole("USER","ADMIN")
-            .anyRequest().authenticated())
-            .headers(headers->headers.frameOptions(frame->frame.sameOrigin()))
-            .httpBasic(Customizer.withDefaults());
+                        // endpoints kräver inloggning USER eller ADMIN
+                        //.requestMatchers(
+                        //       "/api/edufy/user/**",
+                        //      "/api/edufy/user/**/increment-playcount")
+                        //      .hasAnyRole("USER","ADMIN")
+                        //.anyRequest().authenticated())
+                        .anyRequest().permitAll())
+                .headers(headers->headers.frameOptions(frame->frame.sameOrigin()))
+                .httpBasic(Customizer.withDefaults());
         return http.build();
     }
 

@@ -14,15 +14,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Optional;
 
-@Controller
-@RequestMapping("edufy/api/")
+@RestController
+@RequestMapping("/api/edufy")
 public class UserController {
     private final UserService userService;
     public UserController(UserService userService) {
         this.userService = userService;
     }
 
-    @PostMapping("registeruser")
+    @PostMapping("/registeruser")
     public ResponseEntity<?> registerUser(@RequestBody User user) {
         try {
             User createdUser = userService.registerUser(user);
@@ -32,7 +32,7 @@ public class UserController {
         }
     }
 
-    @GetMapping("user/{username}")
+    @GetMapping("/user/{username}")
     public ResponseEntity<?> getUserByUsername(@PathVariable String username) {
         Optional<User> user = userService.getUserByUsername(username);
         if (user.isPresent()) {
@@ -43,13 +43,13 @@ public class UserController {
         }
     }
 
-    @GetMapping("listallusers")
+    @GetMapping("/listusers")
     public ResponseEntity<List<User>> getAllUsers() {
         List<User> users = userService.getAllUsers();
         return ResponseEntity.ok(users);
     }
 
-    @PutMapping("updateuser/{id}")
+    @PutMapping("/updateuser/{id}")
     public ResponseEntity<?> updateUser( @PathVariable Long id, @RequestBody User user) {
         try {
             user.setId(id);
@@ -62,7 +62,7 @@ public class UserController {
         }
     }
 
-    @DeleteMapping("deleteuser/{id}")
+    @DeleteMapping("/deleteuser/{id}")
     public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         try{
             userService.deleteUser(id);
@@ -72,7 +72,7 @@ public class UserController {
         }
     }
         //endpoint för att visa ökning av antal spelningar
-    @PatchMapping("user/increment-playcount/{username}")
+    @PatchMapping("/user/{username}/increment-playcount")
     public ResponseEntity<?> incrementPlayCount(@PathVariable String username, @RequestParam(defaultValue = "1") Long count) {
         try {
             userService.incrementPlayCount(username, count);
@@ -82,19 +82,19 @@ public class UserController {
         }
     }
 
-    @GetMapping("usermediahistory/{userId}")
-    public List<MediaReference> getUserMediaHistory(@PathVariable Long userId){
-        return userService.getUserMediaHistory(userId);
+    @GetMapping("/usermediahistory/{userid}")
+    public List<MediaReference> getUserMediaHistory(@PathVariable Long userid){
+        return userService.getUserMediaHistory(userid);
     }
 
-    @PutMapping("setusermediahistory/{userId}")
-    public void setUserMediaHistory(@PathVariable Long userId, @Valid @RequestBody List<MediaReference> mediaHistory){
-        userService.setUserMediaHistory(userId, mediaHistory);
+    @PutMapping("/setusermediahistory/{userid}")
+    public void setUserMediaHistory(@PathVariable Long userid, @Valid @RequestBody List<MediaReference> mediaHistory){
+        userService.setUserMediaHistory(userid, mediaHistory);
     }
 
-    @PutMapping("addtousermediahistory/{userId}/{mediaType}/{mediaId}")
-    public void addToUserMediaHistory(@PathVariable Long userId, @PathVariable String mediaType, @PathVariable Long mediaId){
-        userService.addMediaToUserMediaHistory(userId, mediaType, mediaId);
+    @PutMapping("/addtousermediahistory/{userid}/{mediatype}/{mediaid}")
+    public void addToUserMediaHistory(@PathVariable Long userid, @PathVariable String mediatype, @PathVariable Long mediaid){
+        userService.addMediaToUserMediaHistory(userid, mediatype, mediaid);
     }
 
 }
