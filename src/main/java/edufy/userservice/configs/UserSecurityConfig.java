@@ -73,7 +73,7 @@ public class UserSecurityConfig {
             .requestMatchers("/h2-console/**").permitAll()
             // Endpoints för registrering öppnen för alla
             .requestMatchers("/edufy/api/registeruser").permitAll()
-                    //test
+                    //test endpoint
                     .requestMatchers("/edufy/api/listusers").permitAll()
             // Admin-restriktioner
             .requestMatchers("/edufy/api/deleteuser/**").hasRole("ADMIN")
