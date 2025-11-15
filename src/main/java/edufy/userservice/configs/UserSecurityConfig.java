@@ -72,17 +72,17 @@ public class UserSecurityConfig {
             // H2-console tillåten för alla
             .requestMatchers("/h2-console/**").permitAll()
             // Endpoints för registrering öppnen för alla
-            .requestMatchers("/api/edufy/registeruser").permitAll()
+            .requestMatchers("/edufy/api/registeruser").permitAll()
+                    //test
+                    .requestMatchers("/edufy/api/listusers").permitAll()
             // Admin-restriktioner
-            .requestMatchers("/api/edufy/deleteuser/**").hasRole("ADMIN")
-            .requestMatchers("/api/edufy/listusers").hasRole("ADMIN")
-            .requestMatchers("/api/edufy/updateuser/**").hasRole("ADMIN")
+            .requestMatchers("/edufy/api/deleteuser/**").hasRole("ADMIN")
+//            .requestMatchers("/edufy/api/listusers").hasRole("ADMIN")
+            .requestMatchers("/edufy/api/updateuser/**").hasRole("ADMIN")
 
             // endpoints kräver inloggning USER eller ADMIN
-            .requestMatchers(
-                    "/api/edufy/user/**",
-                    "/api/edufy/user/**/increment-playcount")
-                    .hasAnyRole("USER","ADMIN")
+            .requestMatchers("/edufy/api/user/**").hasAnyRole("USER","ADMIN")
+            .requestMatchers("/edufy/api/user/*/increment-playcount").hasAnyRole("USER","ADMIN")
             .anyRequest().authenticated())
             .headers(headers->headers.frameOptions(frame->frame.sameOrigin()))
             .httpBasic(Customizer.withDefaults());

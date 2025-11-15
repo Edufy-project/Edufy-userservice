@@ -15,7 +15,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/api/edufy")
+@RequestMapping("edufy/api")
 public class UserController {
     private final UserService userService;
     public UserController(UserService userService) {
