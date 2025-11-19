@@ -63,30 +63,48 @@ public class UserSecurityConfig {
                         .build()
                 ).orElseThrow(() -> new ResourceNotFoundException("User", "username", username));
     }
-
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .csrf(csrf -> csrf.disable())
-            .authorizeHttpRequests(auth -> auth
-            // H2-console tillåten för alla
-            .requestMatchers("/h2-console/**").permitAll()
-            // Endpoints för registrering öppnen för alla
-            .requestMatchers("/edufy/api/registeruser").permitAll()
-                    //test endpoint
-                    .requestMatchers("/edufy/api/listusers").permitAll()
-            // Admin-restriktioner
-            .requestMatchers("/edufy/api/deleteuser/**").hasRole("ADMIN")
-//            .requestMatchers("/edufy/api/listusers").hasRole("ADMIN")
-            .requestMatchers("/edufy/api/updateuser/**").hasRole("ADMIN")
-
-            // endpoints kräver inloggning USER eller ADMIN
-            .requestMatchers("/edufy/api/user/**").hasAnyRole("USER","ADMIN")
-            .requestMatchers("/edufy/api/user/*/increment-playcount").hasAnyRole("USER","ADMIN")
-            .anyRequest().authenticated())
-            .headers(headers->headers.frameOptions(frame->frame.sameOrigin()))
-            .httpBasic(Customizer.withDefaults());
+                .csrf(csrf -> csrf.disable())
+                .authorizeHttpRequests(auth -> auth
+                        // Tillåt allt under H2-console
+                        .requestMatchers("/h2-console/**").permitAll()
+                        // Alla endpoints öppna
+                        .anyRequest().permitAll()
+                )
+                .headers(headers -> headers.frameOptions(frame -> frame.sameOrigin()))
+                .httpBasic(Customizer.withDefaults());
         return http.build();
     }
+//    @Bean
+//    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+//        http
+//            .csrf(csrf -> csrf.disable())
+//            .authorizeHttpRequests(auth -> auth
+//            // H2-console tillåten för alla
+//            .requestMatchers("/h2-console/**").permitAll()
+//            // Endpoints för registrering öppnen för alla
+//            .requestMatchers("/edufy/api/registeruser").permitAll()
+//                    //test endpoint
+//                    .requestMatchers("/edufy/api/listusers").permitAll()
+//            // Admin-restriktioner
+//            .requestMatchers("/edufy/api/deleteuser/**").hasRole("ADMIN")
+////            .requestMatchers("/edufy/api/listusers").hasRole("ADMIN")
+//            .requestMatchers("/edufy/api/updateuser/**").hasRole("ADMIN")
+//
+//            // endpoints kräver inloggning USER eller ADMIN
+////            .requestMatchers("/edufy/api/user/**").hasAnyRole("USER","ADMIN")
+//                    //test
+//                    .requestMatchers("/edufy/api/user/**").permitAll()
+////                    .requestMatchers("/edufy/api/user/*/increment-playcount").hasAnyRole("USER","ADMIN")
+//                    //test
+//                    .requestMatchers("/edufy/api/user/*/increment-playcount").permitAll()
+//                    .requestMatchers("/edufy/api/usermediahistory/**").permitAll()
+//                    .anyRequest().authenticated())
+//            .headers(headers->headers.frameOptions(frame->frame.sameOrigin()))
+//            .httpBasic(Customizer.withDefaults());
+//        return http.build();
+//    }
 
 }

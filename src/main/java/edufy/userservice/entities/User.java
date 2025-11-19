@@ -116,5 +116,4 @@ private List<MediaReference> mediaHistory = new ArrayList<>();
     public List<MediaReference> getMediaHistory(){
         return this.mediaHistory;
     }
-
 }
