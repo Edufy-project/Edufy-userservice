@@ -19,3 +19,25 @@ INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 19, 'm
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 36, 'music');
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 29, 'music');
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 33, 'music');
+
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 20, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 19, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 18, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 17, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 16, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 15, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 14, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 13, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 12, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 11, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 10, 'video');
+
+
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 19, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 36, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 29, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 33, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 1, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 2, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 3, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 44, 'pod');
