@@ -31,13 +31,23 @@ INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 13, 'v
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 12, 'video');
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 11, 'video');
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 10, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 9, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 8, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 7, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 6, 'video');
 
 
-INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 19, 'pod');
-INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 36, 'pod');
-INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 29, 'pod');
-INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 33, 'pod');
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 1, 'pod');
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 2, 'pod');
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 3, 'pod');
-INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 44, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 4, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 5, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 6, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 7, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 8, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 9, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 10, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 11, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 12, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 13, 'pod');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 14, 'pod');
