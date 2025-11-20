@@ -27,7 +27,7 @@ public class UserFeedback {
     @Column(name = "feedback_type", nullable = false)
     private String feedbackType; // THUMBS_UP eller THUMBS_DOWN
 
-    @Column(nullable = false)
+    @Column
     private LocalDateTime timestamp;
 
 

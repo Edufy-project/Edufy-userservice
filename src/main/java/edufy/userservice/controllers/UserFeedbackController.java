@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api/edufy")
+@RequestMapping("/edufy/api")
 public class UserFeedbackController {
 
     private final UserFeedbackService userFeedbackService;
