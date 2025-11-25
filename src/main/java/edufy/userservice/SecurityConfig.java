@@ -42,7 +42,6 @@ public class SecurityConfig {
     private Collection<GrantedAuthority> extractKeyCloakRoles(Jwt jwt){
         Collection<GrantedAuthority>  authorities = new ArrayList<>();
 
-        //realm roles
         Map<String, Object> realmAccess = jwt.getClaim("realm_access");
         if (realmAccess != null && realmAccess.containsKey("roles")) {
             Collection<String> roles = (Collection<String>) realmAccess.get("roles");
@@ -52,7 +51,6 @@ public class SecurityConfig {
             );
         }
 
-        //client roles
         Map<String, Object> resourceAccess = jwt.getClaim("resource_access");
         if (resourceAccess != null && resourceAccess.containsKey("user-service")) {
             Map<String, Object> client = (Map<String, Object>) resourceAccess.get("user-service");
@@ -62,7 +60,7 @@ public class SecurityConfig {
                     .collect(Collectors.toList())
             );
         }
-        
+
         return authorities;
     }
 
