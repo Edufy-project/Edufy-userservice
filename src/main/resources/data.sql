@@ -27,4 +27,5 @@ INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (3, 3, 'mu
 
 INSERT INTO user_feedback (user_id, media_id, media_type, feedback_type) VALUES (2, 36, 'music', 'THUMBS_DOWN');
 INSERT INTO user_feedback (user_id, media_id, media_type, feedback_type) VALUES (2, 33, 'music', 'THUMBS_DOWN');
+INSERT INTO user_feedback (user_id, media_id, media_type, feedback_type) VALUES (2, 37, 'music', 'THUMBS_DOWN');
 INSERT INTO user_feedback (user_id, media_id, media_type, feedback_type) VALUES (2, 5, 'music', 'THUMBS_DOWN');
