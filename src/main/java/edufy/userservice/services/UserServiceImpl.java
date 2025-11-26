@@ -17,11 +17,11 @@ import java.util.Optional;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
-    private final PasswordEncoder passwordEncoder;
+    //private final PasswordEncoder passwordEncoder;
 
-    public UserServiceImpl(UserRepository userRepository, PasswordEncoder passwordEncoder) {
+    public UserServiceImpl(UserRepository userRepository/*, PasswordEncoder passwordEncoder*/) {
         this.userRepository = userRepository;
-        this.passwordEncoder = passwordEncoder;
+        //this.passwordEncoder = passwordEncoder;
     }
 
     @Override
@@ -44,7 +44,7 @@ public class UserServiceImpl implements UserService {
             throw new InvalidUserException("Username already exists");
         });
 
-        user.setPassword(passwordEncoder.encode(user.getPassword()));
+        //user.setPassword(passwordEncoder.encode(user.getPassword()));
         userRepository.save(user);
         return user;
     }
@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService {
         existingUser.setPreferredGenres(user.getPreferredGenres());
         // Uppdatera lösenord om nytt skickas in
         if (user.getPassword() != null && !user.getPassword().trim().isEmpty()) {
-            existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
+            //existingUser.setPassword(passwordEncoder.encode(user.getPassword()));
         }
 //         Uppdatera roller (valfritt – beroende på säkerhetsnivå)
 //        if (user.getRoles() != null && !user.getRoles().trim().isEmpty()) {

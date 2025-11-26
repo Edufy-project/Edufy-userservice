@@ -5,8 +5,11 @@ import edufy.userservice.exceptions.InvalidUserException;
 import edufy.userservice.exceptions.ResourceNotFoundException;
 import edufy.userservice.repositories.FeedbackRepository;
 import edufy.userservice.repositories.UserRepository;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.client.RestClient;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,10 +19,19 @@ public class UserFeedbackServiceImpl implements UserFeedbackService {
 
     private final FeedbackRepository feedbackRepository;
     private final UserRepository userRepository;
+    private RestClient mediaServiceClient;
 
-    public UserFeedbackServiceImpl(FeedbackRepository feedbackRepository, UserRepository userRepository) {
+    public UserFeedbackServiceImpl(
+            FeedbackRepository feedbackRepository,
+            UserRepository userRepository,
+            RestClient.Builder restClientBuilder,
+            @Value("${media.service.url}") String mediaServiceUrl)
+    {
         this.feedbackRepository = feedbackRepository;
         this.userRepository = userRepository;
+        this.mediaServiceClient = restClientBuilder
+                .baseUrl(mediaServiceUrl)
+                .build();
     }
 
     @Override
@@ -41,8 +53,23 @@ public class UserFeedbackServiceImpl implements UserFeedbackService {
 
         String feedbackType = isPositive ? UserFeedback.THUMBS_UP : UserFeedback.THUMBS_DOWN;
         UserFeedback feedback = new UserFeedback(userId, mediaId, mediaType, feedbackType);
+        if (feedback.getFeedbackType().equals("THUMBS_UP")) {
+            likeMedia(mediaType, mediaId);
+        }
 
         return feedbackRepository.save(feedback);
+    }
+
+    public void likeMedia(String mediaType, Long mediaId) {
+        try {
+            mediaServiceClient.get()
+                    .uri("/api/edufy/mediaplayer/likemedia/" + mediaType + "/" + mediaId)
+                    .retrieve()
+                    .toBodilessEntity();
+
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to like media");
+        }
     }
 
     @Override

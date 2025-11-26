@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @Controller
-@RequestMapping("/api/edufy")
+@RequestMapping("/edufy/api/users")
 public class UserFeedbackController {
 
     private final UserFeedbackService userFeedbackService;
@@ -27,6 +27,11 @@ public class UserFeedbackController {
     public ResponseEntity<?> submitFeedback(
             @PathVariable Long userId,
             @RequestBody FeedbackRequestDto request) {
+
+        System.out.println("Received request: mediaId=" + request.getMediaId()
+                + ", mediaType=" + request.getMediaType()
+                + ", isPositive=" + request.isPositive());
+
         try {
             UserFeedback feedback = userFeedbackService.submitFeedback(
                     userId,

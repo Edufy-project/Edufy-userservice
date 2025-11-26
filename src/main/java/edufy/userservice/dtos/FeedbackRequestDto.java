@@ -7,10 +7,10 @@ public class FeedbackRequestDto {
 
     public FeedbackRequestDto() {}
 
-    public FeedbackRequestDto(Long mediaId, String mediaType, boolean isPositive) {
+    public FeedbackRequestDto(Long mediaId, String mediaType, boolean positive) {
         this.mediaId = mediaId;
         this.mediaType = mediaType;
-        this.isPositive = isPositive;
+        this.isPositive = positive;
     }
 
 
@@ -35,6 +35,6 @@ public class FeedbackRequestDto {
     }
 
     public void setPositive(boolean positive) {
-        isPositive = positive;
+        this.isPositive = positive;
     }
 }
