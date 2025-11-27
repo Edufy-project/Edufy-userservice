@@ -19,6 +19,9 @@ INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (1, 19, 'm
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 36, 'music');
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 29, 'music');
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 33, 'music');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 1, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 2, 'video');
+INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (2, 3, 'video');
 
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (3, 28, 'music');
 INSERT INTO user_media_history (user_id, media_id, media_type) VALUES (3, 29, 'music');
