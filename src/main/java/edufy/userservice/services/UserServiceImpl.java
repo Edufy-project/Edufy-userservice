@@ -136,7 +136,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public List<MediaReference> getUserMediaHistory(Long userId) {
-
         return getUserOrThrow(userId).getMediaHistory();
     }
 
