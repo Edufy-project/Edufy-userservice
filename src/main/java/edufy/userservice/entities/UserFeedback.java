@@ -22,10 +22,10 @@ public class UserFeedback {
     private Long mediaId;
 
     @Column(name = "media_type", nullable = false)
-    private String mediaType; // "music", "pod", "video"
+    private String mediaType;
 
     @Column(name = "feedback_type", nullable = false)
-    private String feedbackType; // THUMBS_UP eller THUMBS_DOWN
+    private String feedbackType;
 
     @Column
     private LocalDateTime timestamp;

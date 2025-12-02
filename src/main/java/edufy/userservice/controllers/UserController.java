@@ -8,7 +8,6 @@ import edufy.userservice.services.UserService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -71,7 +70,7 @@ public class UserController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
         }
     }
-        //endpoint för att visa ökning av antal spelningar
+
     @PatchMapping("/user/{username}/increment-playcount")
     public ResponseEntity<?> incrementPlayCount(@PathVariable String username, @RequestParam(defaultValue = "1") Long count) {
         try {
